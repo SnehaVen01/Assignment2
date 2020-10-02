@@ -44,6 +44,36 @@ class NeuralNet:
         
         def __sigmoid_derivative(self, x):
             return x * (1 - x)
+            
+         """
+    ## tanh activation function
+
+    def __activation(self, x, activation="tanh"):
+        if activation == "tanh":
+            self.__tanh(self, x)
+    def _activation_derivative(self, x , activation = "tanh"):
+        if activation == "tanh":
+            self._tanh_derivative(self,x)
+    def _tanh(self,x):
+        return (np.exp(x)-np.exp(-x))/(np.exp(x)+np.exp(-x))
+    def _tanh_derivative(self,x):
+        return 1 - (((np.exp(x)-np.exp(-x))/(np.exp(x)+np.exp(-x)))**2)
+   
+    ## reLu activation function
+            
+    def __activation(self, x, activation="reLu"):
+        if activation == "reLu":
+            self.__reLu(self, x)
+    def _activation_derivative(self,x, activation = "reLu"):
+        if activation == "reLu":
+            self._reLu_derivative(self,x)
+    def _reLu(self,x):
+        return np.maximum(0,x)
+    def _reLu_derivative(self,x):
+        x[x<=0] = 0
+        x[x>0] = 1
+        return x
+        """
         
         def train(self, max_iterations=60000, learning_rate=0.25):
             for iteration in range(max_iterations):
