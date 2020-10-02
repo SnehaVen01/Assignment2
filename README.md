@@ -80,6 +80,9 @@ class NeuralNet:
                 out = self.forward_pass()
                 error = 0.5 * np.power((out - self.y), 2)
                 self.backward_pass(out, activation="sigmoid")
+                ## tanh and reLu
+                self.backward_pass(out, activation="tanh")
+                self.backward_pass(out, activation="reLu")
                 
                 update_weight_output = learning_rate * np.dot(self.X_hidden.T, self.deltaOut)
                 update_weight_output_b = learning_rate * np.dot(np.ones((np.size(self.X, 0), 1)).T, self.deltaOut)
