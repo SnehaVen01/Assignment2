@@ -1,4 +1,6 @@
-# Assignment2
+## Assignment2
+
+
 class NeuralNet:
     def __init__(self, dataFile, header=True, h=4):
         #np.random.seed(1)
@@ -109,6 +111,19 @@ class NeuralNet:
         in_output = np.dot(self.X_hidden, self.W_output) + self.Wb_output
         if activation == "sigmoid":
             out = self.__sigmoid(in_output)
+            
+         """
+        if activation == "tanh":
+            self.X_hidden = self.__tanh(in_hidden)
+        in_output = np.dot(self.X_hidden, self.W_output) + self.Wb_output
+        if activation == "tanh":
+            out = self.__tanh(in_output)
+        if activation == "reLu":
+            self.X_hidden = self.__reLu(in_hidden)
+        in_output = np.dot(self.X_hidden, self.W_output) + self.Wb_output
+        if activation == "reLu":
+            out = self.__reLu(in_output)  
+        """
             return out
         def backward_pass(self, out, activation):
         # pass our inputs through our neural network
@@ -126,6 +141,33 @@ class NeuralNet:
                 delta_hidden_layer = (self.deltaOut.dot(self.W_output.T)) * (self.__sigmoid_derivative(self.X_hidden))
 
                 self.deltaHidden = delta_hidden_layer
+                
+                """
+    ## tanh
+    def compute_output_delta(self, out, activation="tanh"):
+        if activation == "tanh":
+            delta_output = (self.y - out) * (self.__sigmoid_derivative(out))
+
+        self.deltaOut = delta_output
+
+    def compute_hidden_delta(self, activation="tanh"):
+        if activation == "tanh":
+            delta_hidden_layer = (self.deltaOut.dot(self.W_output.T)) * (self.__sigmoid_derivative(self.X_hidden))
+
+        self.deltaHidden = delta_hidden_layer
+    ## reLu 
+    def compute_output_delta(self, out, activation="reLu"):
+        if activation == "reLu":
+            delta_output = (self.y - out) * (self.__sigmoid_derivative(out))
+
+        self.deltaOut = delta_output
+
+    def compute_hidden_delta(self, activation="reLu"):
+        if activation == "reLu":
+            delta_hidden_layer = (self.deltaOut.dot(self.W_output.T)) * (self.__sigmoid_derivative(self.X_hidden))
+
+        self.deltaHidden = delta_hidden_layer
+    """
      # TODO: Implement the predict function for applying the trained model on the  test dataset.
     # You can assume that the test dataset has the same format as the training dataset
     # You have to output the test error from this function   
