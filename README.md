@@ -1,4 +1,5 @@
 ## Assignment2
+## The original code has been given by the professor. I have completed the todo areas for the ReLu and Tanh function. I have also included the CSV file that was used to do the neural net on. 
 
 
 class NeuralNet:
